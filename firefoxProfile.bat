@@ -4,6 +4,8 @@ FOR /F "delims=" %%i IN ('TASKLIST ^| FIND "firefox"') DO SET firefoxOpened=1
 IF %firefoxOpened% EQU 0 (
 	::firefox not runs
 	START "Firefox %1" "C:\Program Files\Mozilla Firefox\firefox.exe" -P "%1"
+	TIMEOUT /T 3
+	%0 %*
 	GOTO :EOF
 )
 
@@ -16,6 +18,8 @@ FOR /F "delims=" %%j IN ('WMIC PROCESS GET ProcessId^,CommandLine ^| FIND "firef
 IF %profileOk% EQU 0 (
 	::firefox runs but not at wanted profile, start it whith --no-remote option
 	START "Firefox %1" "C:\Program Files\Mozilla Firefox\firefox.exe" -P "%1" --no-remote
+	TIMEOUT /T 3
+	%0 %*
 	GOTO :EOF
 )
 
