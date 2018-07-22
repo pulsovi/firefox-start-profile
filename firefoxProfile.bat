@@ -27,5 +27,5 @@ FOR /F "tokens=6" %%k IN ("%CommandLineTampon%") DO SET pidFfPf=%%k
 FOR /F "tokens=7" %%k IN ("%CommandLineTampon%") DO SET pidFfPf=%%k
 IF %profileOk% EQU 1 (
 	::firefox run at the wanted profile, activate it
-	START ActiveWindow.ahk %pidFfPf%
+	START "activeWindow" "C:\Program Files\AutoHotkey\AutoHotkeyU64.exe" "D:\MesDonnees\Dev\PosteDeTravail\Firefox\OpenProfile\ActiveWindow.ahk" %pidFfPf%
 )
